@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - MONGODB_URI=${MONGODB_URI}
+        - DB=${DB} 
+        - COLLECTION=${COLLECTION}
+    image: ${REGISTRY}.dkr.ecr.us-east-1.amazonaws.com/go-ecs-app-repo:latest
+    ports:
+      - "443:443" 
+    env_file:
+            - .env
+    environment:
+        - MONGODB_URI=${MONGODB_URI} 
+        - MONGO_DB=${DB} 
+        - COLLECTION=${COLLECTION}
