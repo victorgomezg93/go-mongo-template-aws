@@ -13,23 +13,7 @@ First in your command line you have to configure the access in aws
 ```sh
 aws configure
 ```
-
-Then you have an initialization script, it's called "init.bat", this script prompts you and asks for the registryID, when you give this ID the script builds and tag the docker image, create an ECR repository and pushed the imatge into the ECR, also the script checks for terraform configuration files because it's an init script so in case we have an tfstate or lock the script remove this files
-
-```sh
-init.bat
-```
-
-Once initialized we have to change the registryID in variables.tf with your own ID, here:
-
-```sh
-variable "app_image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "880231462042.dkr.ecr.us-east-1.amazonaws.com/go-ecs-app-repo:latest"
-}
-```
-
- and also create the certificate in AWS manually using the certificates located in /app, in the certificate manager you have to use public.crt, private.key and rootCA.crt in this order to create the certificate and copy the arn and paste it in ALB here:
+Then you have to create the certificate in AWS manually using the certificates located in /app, in the certificate manager you have to use public.crt, private.key and rootCA.crt in this order to create the certificate and copy the arn and paste it in ALB here:
  
 ```sh
 resource "aws_alb_listener" "front_end" {
@@ -38,18 +22,27 @@ resource "aws_alb_listener" "front_end" {
   protocol          = "HTTPS"
   certificate_arn    = "arn:aws:acm:us-east-1:880231462042:certificate/8730eba6-f34c-46d0-921b-0a460ee1a181"
 ```
-Then we can go to the infraestructure folder and use:
+
+Copy the registry and paste it on .env file under the "registry" variable and in variables.tf under this value:
 
 ```sh
-terraform init
-terraform apply --auto-approve
+variable "app_image" {
+  description = "Docker image to run in the ECS cluster"
+  default     = "880231462042.dkr.ecr.us-east-1.amazonaws.com/go-ecs-app-repo:latest"
+}
+```
+
+Then you have an initialization script, it's called "init.bat", this script prompts you and asks for the registryID, when you give this ID the script builds the docker image, creates an ECR repository and push the imatge into the ECR, also the script checks for terraform configuration files because it's an init script so in case we have an tfstate or lock the script remove this files and finally the script runs terraform.
+
+```sh
+init.bat
 ```
 
 The result should be an alb hostname accesible by https with a healtcheck in /health to check one database.
 
 I'm using a sandbox with automated shutdown so this urls won't be accesible but in my case after deployment I recieve a message with this alb hostname: alb_hostname = "myapp-load-balancer-920324680.us-east-1.elb.amazonaws.com"
 
-If i go to this urls I would be able to test the certificate and also information about one database not deployed
+If i go to this urls I would be able to test the certificate and also information about one mongo database
  
 https://myapp-load-balancer-920324680.us-east-1.elb.amazonaws.com
 https://myapp-load-balancer-920324680.us-east-1.elb.amazonaws.com/health

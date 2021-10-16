@@ -8,5 +8,7 @@ cd infraestructure
 del .terraform.lock.hcl
 del terraform.tfstate
 del terraform.tfstate.backup
+terraform init
+terraform apply --auto-approve
 
 PAUSE

@@ -5,3 +5,4 @@
 .env
 # Module directory
 .terraform/
+certificates/
