@@ -39,6 +39,9 @@ env:
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: myapp           # set this to the name of the container in the
   MONGODB_URI: ${{ secrets.MONGODB_URI }}                                             # containerDefinitions section of your task definition
+  DB: ${{ secrets.DB }}   
+  COLLECTION: ${{ secrets.COLLECTION }}   
+
 
 defaults:
   run:
@@ -76,7 +79,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg MONGODB_URI=${MONGODB_URI} .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg MONGODB_URI=${MONGODB_URI} DB=${DB} COLLECTION=${COLLECTION} .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
