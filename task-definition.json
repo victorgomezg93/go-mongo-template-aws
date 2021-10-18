@@ -118,12 +118,6 @@
             }
         }
     ],
-    "placementConstraints": [
-        {
-            "type": "memberOf",
-            "expression": ""
-        }
-    ],
     "requiresCompatibilities": [
         "EXTERNAL"
     ],
