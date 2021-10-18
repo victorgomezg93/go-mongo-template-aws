@@ -36,12 +36,6 @@
                     "value": null
                 }
             ],
-            "environmentFiles": [
-                {
-                    "value": null,
-                    "type": "s3"
-                }
-            ],
             "mountPoints": [
                 {
                     "sourceVolume": null,
@@ -55,48 +49,10 @@
                     "readOnly": true
                 }
             ],
-            "linuxParameters": {
-                "capabilities": {
-                    "add": [
-                        null
-                    ],
-                    "drop": [
-                        null
-                    ]
-                },
-                "devices": [
-                    {
-                        "hostPath": null,
-                        "containerPath": null,
-                        "permissions": [
-                            "read"
-                        ]
-                    }
-                ],
-                "initProcessEnabled": true,
-                "sharedMemorySize": 0,
-                "tmpfs": [
-                    {
-                        "containerPath": null,
-                        "size": 0,
-                        "mountOptions": [
-                            null
-                        ]
-                    }
-                ],
-                "maxSwap": 0,
-                "swappiness": 0
-            },
             "secrets": [
                 {
                     "name": null,
                     "valueFrom": null
-                }
-            ],
-            "dependsOn": [
-                {
-                    "containerName": null,
-                    "condition": "START"
                 }
             ],
             "startTimeout": 0,
@@ -148,25 +104,10 @@
                     }
                 ]
             },
-            "healthCheck": {
-                "command": [
-                    null
-                ],
-                "interval": 0,
-                "timeout": 0,
-                "retries": 0,
-                "startPeriod": 0
-            },
             "systemControls": [
                 {
                     "namespace": "",
                     "value": ""
-                }
-            ],
-            "resourceRequirements": [
-                {
-                    "value": null,
-                    "type": "InferenceAccelerator"
                 }
             ],
             "firelensConfiguration": {
@@ -194,16 +135,6 @@
                     "KeyName": ""
                 }
             },
-            "efsVolumeConfiguration": {
-                "fileSystemId": null,
-                "rootDirectory": "",
-                "transitEncryption": "DISABLED",
-                "transitEncryptionPort": 0,
-                "authorizationConfig": {
-                    "accessPointId": "",
-                    "iam": "DISABLED"
-                }
-            },
             "fsxWindowsFileServerVolumeConfiguration": {
                 "fileSystemId": "",
                 "rootDirectory": "",
@@ -229,24 +160,6 @@
         {
             "key": "",
             "value": ""
-        }
-    ],
-    "pidMode": "task",
-    "ipcMode": "task",
-    "proxyConfiguration": {
-        "type": "APPMESH",
-        "containerName": null,
-        "properties": [
-            {
-                "name": null,
-                "value": null
-            }
-        ]
-    },
-    "inferenceAccelerators": [
-        {
-            "deviceName": null,
-            "deviceType": null
         }
     ],
     "ephemeralStorage": {
