@@ -32,42 +32,42 @@
             ],
             "environment": [
                 {
-                    "name": "",
-                    "value": ""
+                    "name": null,
+                    "value": null
                 }
             ],
             "environmentFiles": [
                 {
-                    "value": "",
+                    "value": null,
                     "type": "s3"
                 }
             ],
             "mountPoints": [
                 {
-                    "sourceVolume": "",
-                    "containerPath": "",
+                    "sourceVolume": null,
+                    "containerPath": null,
                     "readOnly": true
                 }
             ],
             "volumesFrom": [
                 {
-                    "sourceContainer": "",
+                    "sourceContainer": null,
                     "readOnly": true
                 }
             ],
             "linuxParameters": {
                 "capabilities": {
                     "add": [
-                        ""
+                        null
                     ],
                     "drop": [
-                        ""
+                        null
                     ]
                 },
                 "devices": [
                     {
-                        "hostPath": "",
-                        "containerPath": "",
+                        "hostPath": null,
+                        "containerPath": null,
                         "permissions": [
                             "read"
                         ]
@@ -77,10 +77,10 @@
                 "sharedMemorySize": 0,
                 "tmpfs": [
                     {
-                        "containerPath": "",
+                        "containerPath": null,
                         "size": 0,
                         "mountOptions": [
-                            ""
+                            null
                         ]
                     }
                 ],
@@ -89,13 +89,13 @@
             },
             "secrets": [
                 {
-                    "name": "",
-                    "valueFrom": ""
+                    "name": null,
+                    "valueFrom": null
                 }
             ],
             "dependsOn": [
                 {
-                    "containerName": "",
+                    "containerName": null,
                     "condition": "START"
                 }
             ],
@@ -150,7 +150,7 @@
             },
             "healthCheck": {
                 "command": [
-                    ""
+                    null
                 ],
                 "interval": 0,
                 "timeout": 0,
@@ -165,7 +165,7 @@
             ],
             "resourceRequirements": [
                 {
-                    "value": "",
+                    "value": null,
                     "type": "InferenceAccelerator"
                 }
             ],
@@ -195,7 +195,7 @@
                 }
             },
             "efsVolumeConfiguration": {
-                "fileSystemId": "",
+                "fileSystemId": null,
                 "rootDirectory": "",
                 "transitEncryption": "DISABLED",
                 "transitEncryptionPort": 0,
@@ -235,18 +235,18 @@
     "ipcMode": "task",
     "proxyConfiguration": {
         "type": "APPMESH",
-        "containerName": "",
+        "containerName": null,
         "properties": [
             {
-                "name": "",
-                "value": ""
+                "name": null,
+                "value": null
             }
         ]
     },
     "inferenceAccelerators": [
         {
-            "deviceName": "",
-            "deviceType": ""
+            "deviceName": null,
+            "deviceType": null
         }
     ],
     "ephemeralStorage": {
