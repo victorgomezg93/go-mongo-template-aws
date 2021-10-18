@@ -38,7 +38,7 @@ env:
   ECS_TASK_DEFINITION: go-task # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: myapp           # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}                                             # containerDefinitions section of your task definition
 
 defaults:
   run:
@@ -76,7 +76,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker-compose build
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg MONGODB_URI=${MONGODB_URI} .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
