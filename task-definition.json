@@ -43,12 +43,6 @@
                     "readOnly": true
                 }
             ],
-            "volumesFrom": [
-                {
-                    "sourceContainer": null,
-                    "readOnly": true
-                }
-            ],
             "secrets": [
                 {
                     "name": null,
@@ -119,7 +113,7 @@
         }
     ],
     "requiresCompatibilities": [
-        "EXTERNAL"
+        "FARGATE"
     ],
     "cpu": "1024",
     "memory": "2048",
