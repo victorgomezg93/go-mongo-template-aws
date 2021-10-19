@@ -1,5 +1,16 @@
 # alb.tf
 
+resource "aws_iam_server_certificate" "go_cert" {
+  name_prefix      = "go_cert"
+  certificate_body = file("public.crt")
+  private_key      = file("private.key")
+  certificate_chain = file("rootCA.crt")
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "aws_alb" "main" {
   name            = "myapp-load-balancer"
   subnets         = aws_subnet.public.*.id
@@ -29,7 +40,8 @@ resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_alb.main.id
   port              = var.app_port
   protocol          = "HTTPS"
-  certificate_arn    = "arn:aws:acm:us-east-1:016743245065:certificate/2fef0458-4d75-405a-922d-3482805be7ed"
+  certificate_arn = aws_iam_server_certificate.go_cert.arn
+  #certificate_arn    = "arn:aws:acm:us-east-1:321784826918:certificate/24063daf-fbd3-43a4-acc5-f292d02c8087"
 
   default_action {
     target_group_arn = aws_alb_target_group.app.id
