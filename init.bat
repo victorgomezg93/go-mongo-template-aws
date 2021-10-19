@@ -10,5 +10,5 @@ del terraform.tfstate
 del terraform.tfstate.backup
 terraform init
 terraform apply --auto-approve
-
+aws ecs describe-task-definition --task-definition go-task  --query taskDefinition > task-definition.json
 PAUSE
