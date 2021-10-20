@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:017540759807:task-definition/go-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:372200880285:task-definition/go-task:2",
     "containerDefinitions": [
         {
             "name": "myapp",
-            "image": "017540759807.dkr.ecr.us-east-1.amazonaws.com/go-ecs-app-repo:latest",
+            "image": "372200880285.dkr.ecr.us-east-1.amazonaws.com/go-ecs-app-repo:latest",
             "cpu": 1024,
             "memory": 2048,
             "portMappings": [
@@ -28,9 +28,9 @@
         }
     ],
     "family": "go-task",
-    "executionRoleArn": "arn:aws:iam::017540759807:role/myEcsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::372200880285:role/myEcsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -66,6 +66,6 @@
     ],
     "cpu": "1024",
     "memory": "2048",
-    "registeredAt": "2021-10-19T23:04:47.678000+02:00",
-    "registeredBy": "arn:aws:iam::017540759807:user/cloud_user"
+    "registeredAt": "2021-10-20T09:00:59.006000+02:00",
+    "registeredBy": "arn:aws:iam::372200880285:user/cloud_user"
 }
